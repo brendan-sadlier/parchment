@@ -21,6 +21,17 @@ export default {
     },
 
     {
+      name: 'categories',
+      type: 'array',
+      title: "Categories",
+      of: [
+        {
+          type: 'string'
+        }
+      ]
+    },
+
+    {
       name: 'titleImage',
       type: 'image',
       title: 'Title Image of Blog Article',
