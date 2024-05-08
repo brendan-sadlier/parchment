@@ -1,7 +1,11 @@
 import { blogArticle } from "@/app/lib/interface";
 import { sanityClient, urlFor } from "@/app/lib/sanity"
 import { PortableText } from "next-sanity";
+import { Heart } from 'lucide-react';
+import { Share2 } from 'lucide-react';
+import { Divider } from "@nextui-org/divider";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 async function getBlogArticle(slug: string) {
   const query = `
@@ -27,16 +31,30 @@ export default async function BlogPage({params}: {params: {slug: string}}) {
         <span className="mt-2 block text-3xl text-center leading-8 font-bold tracking-tight sm:text-4xl">{data.title}</span>
       </h1>
 
+      <Divider className="mt-5 mb-3" />
+
+      <div className="w-full relative flex items-start gap-2">
+        <Button variant="outline" size="icon">
+          <Heart className="h-4 w-4"/>
+        </Button>
+
+        <Button variant="outline" size="icon">
+          <Share2 className="h-4 w-4"/>
+        </Button>
+      </div>
+
+
+
       <Image 
         src={urlFor(data.titleImage).url()} 
         alt="Blog Image" 
         width={800} 
         height={400}
         priority
-        className="rounded-lg mt-8 border h-[300px] object-cover"
+        className="rounded-lg mt-5 border h-[300px] object-cover"
       />
 
-      <div className="mt-16 prose prose-blue prose-xl dark:prose-invert prose-li:marker:text-primary">
+      <div className="mt-16 prose prose-blue prose-xl dark:prose-invert prose-li:marker:text-primary prose-a:text-primary">
 
         <PortableText value={data.content} />
 
