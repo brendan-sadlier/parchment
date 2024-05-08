@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./components/theme-provider";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,9 +28,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
         <Navbar />
-        <main className="max-w-7xl mx-auto px-4">
+        <main className="max-w-7xl mx-auto px-4 min-h-screen">
           {children}
         </main>
+        <Footer />
         </ThemeProvider>
       </body>
     </html>

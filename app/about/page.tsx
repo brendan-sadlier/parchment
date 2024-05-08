@@ -106,7 +106,7 @@ export default async function About() {
                 
                   <div className="mt-auto">
                       <Button className="w-full mt-4">
-                        <a href={`${project.repo}`}>Learn More</a>
+                        <a href={project.repo}>Learn More</a>
                       </Button>
                   </div>
 
