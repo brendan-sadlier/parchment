@@ -15,3 +15,12 @@ export interface blogArticle {
   _createdAt: string;
   categories: string[];
 }
+
+export interface ProjectCard {
+  title: string;
+  smallDescription: string;
+  repo: string;
+  titleImage: any;
+  _createdAt: string;
+  languages: string[];
+}
