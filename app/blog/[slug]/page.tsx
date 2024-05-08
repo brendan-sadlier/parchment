@@ -48,13 +48,13 @@ export default async function BlogPage({params}: {params: {slug: string}}) {
       <Image 
         src={urlFor(data.titleImage).url()} 
         alt="Blog Image" 
-        width={800} 
+        width={1000} 
         height={400}
         priority
         className="rounded-lg mt-5 border h-[300px] object-cover"
       />
 
-      <div className="mt-16 prose prose-blue prose-xl dark:prose-invert prose-li:marker:text-primary prose-a:text-primary">
+      <div className="mt-16 prose !max-w-none prose-blue prose-xl dark:prose-invert prose-li:marker:text-primary prose-a:text-primary">
 
         <PortableText value={data.content} />
 
