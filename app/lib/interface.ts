@@ -7,9 +7,10 @@ export interface BlogCard {
   categories: string[];
 }
 
-export interface blogArticle {
+export interface BlogArticle {
   currentSlug: string;
   title: string;
+  author: string;
   content: any;
   titleImage: any;
   _createdAt: string;

@@ -1,3 +1,5 @@
+import { title } from "process";
+
 export default {
   name: 'blog',
   type: 'document',
@@ -18,6 +20,12 @@ export default {
         source: 'title',
         maxLength: 96
       }
+    },
+
+    {
+      name: "author",
+      type: "string",
+      title: "Author of Blog Article",
     },
 
     {

@@ -6,8 +6,10 @@ import Link from "next/link"
 import { sanityClient, urlFor } from "../lib/sanity"
 import { ProjectCard } from "../lib/interface"
 import { Badge } from "@/components/ui/badge"
+import axios from "axios"
 
 async function getProjects() {
+
   const query = 
     `*[_type == 'project'] | order(_createdAt desc) {
         title,

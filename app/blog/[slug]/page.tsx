@@ -1,5 +1,5 @@
-import { blogArticle } from "@/app/lib/interface";
-import { sanityClient, urlFor } from "@/app/lib/sanity"
+import { BlogArticle } from "@/app/lib/interface";
+import { formatDayDate, sanityClient, urlFor } from "@/app/lib/sanity"
 import { PortableText } from "next-sanity";
 import { Heart } from 'lucide-react';
 import { Share2 } from 'lucide-react';
@@ -13,22 +13,28 @@ async function getBlogArticle(slug: string) {
     "currentSlug": slug.current,
       title,
       content,
+      author,
       titleImage,
       _createdAt,
       categories
   }[0]`
 
   const data = await sanityClient.fetch(query);
+  console.log(data.categories)
   return data;
 }
 
 export default async function BlogPage({params}: {params: {slug: string}}) {
-  const data: blogArticle = await getBlogArticle(params.slug);
+  const data: BlogArticle = await getBlogArticle(params.slug);
   return (
     <div className="mt-8 mb-10">
       <h1>
-        <span className="block text-base text-center text-primary font-semibold tracking-wide uppercase">{data.categories}</span>
-        <span className="mt-2 block text-3xl text-center leading-8 font-bold tracking-tight sm:text-4xl">{data.title}</span>
+        <span className="block text-base text-center text-primary font-semibold tracking-wide uppercase">
+          {data.categories.join(' • ')}
+        </span>
+        <span className="block text-base text-center font-light italic mt-2">{formatDayDate(data._createdAt)}</span>
+        <span className="mt-1 block text-3xl text-center leading-8 font-bold tracking-tight sm:text-4xl">{data.title}</span>
+        <span className="block text-center">By: {data.author}</span>
       </h1>
 
       <Divider className="mt-5 mb-3" />
@@ -48,8 +54,8 @@ export default async function BlogPage({params}: {params: {slug: string}}) {
       <Image 
         src={urlFor(data.titleImage).url()} 
         alt="Blog Image" 
-        width={1000} 
-        height={400}
+        width={1440} 
+        height={300}
         priority
         className="rounded-lg mt-5 border h-[300px] object-cover"
       />

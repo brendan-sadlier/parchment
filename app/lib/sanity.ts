@@ -15,7 +15,12 @@ export function urlFor(source: any) {
   return builder.image(source);
 }
 
-export function formatDate(dateString: string): string {
+export function formatDateMonthYear(dateString: string): string {
   const date = parseISO(dateString);
   return format(date, 'dd/MM/yyyy');
+}
+
+export function formatDayDate(dateString: string) {
+  const date = parseISO(dateString);
+  return format(date, "eeee do 'of' MMMM yyyy")
 }
