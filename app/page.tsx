@@ -1,6 +1,6 @@
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { BlogCard } from "./lib/interface";
-import { formatDate, sanityClient, urlFor } from "./lib/sanity";
+import { formatDateMonthYear, sanityClient, urlFor } from "./lib/sanity";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -45,7 +45,7 @@ export default async function Home() {
 
               <CardContent className="flex flex-col flex-grow mt-5">
                 <h3 className="text-lg line-clamp-2 font-bold text-primary">{post.title}</h3>
-                <p className="text-xs italic">{formatDate(post._createdAt)}</p>
+                <p className="text-xs italic">{formatDateMonthYear(post._createdAt)}</p>
 
                 <div className="flex flex-wrap gap-1 mt-2">
                   {post.categories.map((category: string, index: number) => (
